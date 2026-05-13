@@ -1,3 +1,4 @@
+```mermaid
 flowchart TD
     Start([プログラム開始]) --> Init["tasks.csv の存在確認"]
     Init --> Menu([メインメニューの表示])
@@ -5,7 +6,7 @@ flowchart TD
     Menu --> InputChoice{メニュー番号を選択}
     
     InputChoice -->|1| AddTask["データの追加"]
-    AddTask --> A1["入力内容のチェック"]
+    AddTask --> A1["入力チェック"]
     A1 --> A2["tasks.csv に追記"]
     A2 --> WaitEnter
 
@@ -23,3 +24,4 @@ flowchart TD
     InputChoice -->|4| Exit([アプリを終了])
     
     WaitEnter([Enterキー入力待ち]) --> Menu
+```

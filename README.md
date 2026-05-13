@@ -1,25 +1,26 @@
+
 ```mermaid
-flowchart TD
-    A["プログラム開始"] --> B["tasks.csv の存在確認"]
-    B --> C["メインメニュー表示"]
-    C --> D{"番号を選択 (1-4)"}
+graph TD
+    Start[プログラム開始] --> Init[CSVの存在確認]
+    Init --> Menu[メインメニュー表示]
+    Menu --> Branch{番号を選択}
 
-    D -- "1" --> E["データの追加"]
-    E --> F["入力チェック"]
-    F --> G["tasks.csv に追記"]
-    G --> Z["Enter入力待ち"]
+    Branch -- 1 --> Add[データの追加]
+    Add --> Check[入力チェック]
+    Check --> Save1[CSVに追記]
+    Save1 --> Wait[Enter入力待ち]
 
-    D -- "2" --> H["リマインダー抽出"]
-    H --> I["未提出・7日以内を抽出"]
-    I --> J["CSV保存 & 表示"]
-    J --> Z
+    Branch -- 2 --> Ext[リマインダー抽出]
+    Ext --> Filter[未提出/7日以内抽出]
+    Filter --> Save2[CSV保存と表示]
+    Save2 --> Wait
 
-    D -- "3" --> K["データの削除"]
-    K --> L["一覧表示 & 番号選択"]
-    L --> M["CSV上書き保存"]
-    M --> Z
+    Branch -- 3 --> Del[データの削除]
+    Del --> List[一覧表示と選択]
+    List --> Save3[CSV上書き保存]
+    Save3 --> Wait
 
-    D -- "4" --> N["アプリを終了"]
+    Branch -- 4 --> End[アプリを終了]
 
-    Z --> C
+    Wait --> Menu
 ```
